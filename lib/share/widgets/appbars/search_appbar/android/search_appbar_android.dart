@@ -9,6 +9,6 @@ class SearchAppbarAndroid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(backgroundColor: bgColor, elevation: kNone, title: title, actions: actions);
+    return AppBar(backgroundColor: bgColor, elevation: kNone, title: title, actions: actions, centerTitle: true);
   }
 }

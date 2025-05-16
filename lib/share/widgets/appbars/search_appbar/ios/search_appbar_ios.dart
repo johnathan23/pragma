@@ -12,6 +12,7 @@ class SearchAppbarIos extends StatelessWidget {
     return CupertinoNavigationBar(
       middle: title,
       backgroundColor: bgColor,
+      automaticallyImplyMiddle: true,
       trailing: actions != null ? Row(mainAxisSize: MainAxisSize.min, children: actions!) : null,
     );
   }
