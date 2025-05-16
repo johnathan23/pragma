@@ -16,5 +16,8 @@ abstract class ApiClient {
 
   // ? --------- ENDPOINTS ---------
   @GET('/$kApiV1/breeds')
-  Future<List<CatEntity>> getPortfolio(@Query('limit') int limit, @Query('page') int page);
+  Future<List<CatEntity>> getPortfolio({@Query('limit') required int limit, @Query('page') required int page});
+
+  @GET('/$kApiV1/breeds/search')
+  Future<List<CatEntity>> searchCat({@Query('q') required String param});
 }
