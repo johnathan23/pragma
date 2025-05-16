@@ -17,21 +17,13 @@ final appRoutes = [
   GoRoute(
     name: DetailScreen.screenName,
     path: DetailScreen.path,
-    routes: _detailRoutes,
-    pageBuilder: (context, state) => _previewScreen(breedId: null),
-  ),
-];
-
-final _detailRoutes = [
-  GoRoute(
-    path: '/:breedId',
     pageBuilder: (context, state) {
-      final String? userId = state.pathParameters['breedId'];
-      return _previewScreen(breedId: userId);
+      CatEntity? catEntity = state.extra as CatEntity?;
+      return _previewScreen(catEntity: catEntity);
     },
   ),
 ];
 
-PageTransitions _previewScreen({required String? breedId}) {
-  return PageTransitions(screen: DetailScreen(breedId: breedId), transitionType: TransitionType.fade, durationTransition: k500milSec);
+PageTransitions _previewScreen({required CatEntity? catEntity}) {
+  return PageTransitions(screen: DetailScreen(catEntity: catEntity), transitionType: TransitionType.fade, durationTransition: k500milSec);
 }

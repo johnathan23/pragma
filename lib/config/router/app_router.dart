@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pragma_exam/core/domain/entities/data/cat_entity.dart';
 import 'package:pragma_exam/core/domain/enum/log_level_enum.dart';
 import 'package:pragma_exam/core/domain/enum/transition_type_enum.dart';
 import 'package:pragma_exam/core/ui/detail/detail_screen.dart';
@@ -27,7 +28,7 @@ class Router extends _$Router {
   FutureOr<String?> _redirect(BuildContext context, GoRouterState state) {
     CustomConsole.log(
       message:
-          'cae en el redirect => name:${state.name}, path: ${state.path}, pathParams: ${state.pathParameters}, topRoute: ${state.topRoute}, extra: ${state.extra}, fullPath: ${state.fullPath}, uri: ${state.uri}, error: ${state.error}',
+          'redirect => name:${state.name}, path: ${state.path}, pathParams: ${state.pathParameters}, topRoute: ${state.topRoute}, extra: ${state.extra}, fullPath: ${state.fullPath}, uri: ${state.uri}, error: ${state.error}',
       level: LogLevel.info,
     );
 
