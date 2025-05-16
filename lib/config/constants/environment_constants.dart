@@ -6,6 +6,7 @@ class Environment {
   static final String _keyUseLocalApi = 'USE_LOCAL_API';
   static final String _keyApiBaseUrl = 'API_ENDPOINT';
   static final String _keyApiKey = 'API_KEY';
+  static final String _keyBucketUrl = 'BUCKET_URL';
 
   static Future<void> _loadEnvironmentData(String fileName) async {
     try {
@@ -30,4 +31,7 @@ class Environment {
 
   static String get apiKey => _getValue(key: _keyApiKey) ?? '';
   static set apiKey(String value) => dotenv.env[_keyApiKey] = value;
+
+  static String get bucketUrl => _getValue(key: _keyBucketUrl) ?? '';
+  static set bucketUrl(String value) => dotenv.env[_keyBucketUrl] = value;
 }
