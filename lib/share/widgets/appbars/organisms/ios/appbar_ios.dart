@@ -1,11 +1,11 @@
-part of '../custom_search_appbar.dart';
+import 'package:flutter/cupertino.dart';
 
-class SearchAppbarIos extends StatelessWidget {
+class AppbarIos extends StatelessWidget {
   final Widget? title;
   final List<Widget>? actions;
   final Color? bgColor;
 
-  const SearchAppbarIos({super.key, this.title, this.actions, this.bgColor});
+  const AppbarIos({super.key, this.title, this.actions, this.bgColor});
 
   @override
   Widget build(BuildContext context) {

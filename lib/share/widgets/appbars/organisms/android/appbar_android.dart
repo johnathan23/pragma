@@ -1,11 +1,12 @@
-part of '../custom_search_appbar.dart';
+import 'package:flutter/material.dart';
+import 'package:pragma_exam/config/theme/app_dimensions.dart';
 
-class SearchAppbarAndroid extends StatelessWidget {
+class AppbarAndroid extends StatelessWidget {
   final Widget? title;
   final List<Widget>? actions;
   final Color? bgColor;
 
-  const SearchAppbarAndroid({super.key, this.title, this.actions, this.bgColor});
+  const AppbarAndroid({super.key, this.title, this.actions, this.bgColor});
 
   @override
   Widget build(BuildContext context) {
