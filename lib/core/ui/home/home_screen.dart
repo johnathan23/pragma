@@ -13,7 +13,7 @@ import 'package:pragma_exam/core/ui/detail/detail_screen.dart';
 import 'package:pragma_exam/core/ui/home/provider/home_provider.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:pragma_exam/share/helpers/image_helper.dart';
-import 'package:pragma_exam/share/widgets/appbars/search_appbar/custom_search_appbar.dart';
+import 'package:pragma_exam/share/widgets/appbars/custom_search_appbar.dart';
 import 'package:pragma_exam/share/widgets/images/custom_cache_network_image.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
