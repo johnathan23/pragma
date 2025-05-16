@@ -19,7 +19,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   void _goToHome() => context.replaceNamed(HomeScreen.screenName);
 
   @override
@@ -39,9 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
-          children: [
-            FadeAnimation(duration: k3sec, child: Image.asset(imageLogoPath, width: sizeImage, height: sizeImage)),
-          ],
+          children: [FadeAnimation(duration: k3sec, child: Image.asset(imageLogoPath, width: sizeImage, height: sizeImage))],
         ),
       ),
     );

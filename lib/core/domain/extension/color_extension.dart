@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 extension ColorOpacity on Color {
   Color withOpacityValue(double opacity) {
     assert(opacity >= 0 && opacity <= 1, 'The opacity value must be between 0 and 1');
