@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pragma_exam/config/theme/app_colors.dart';
 import 'package:pragma_exam/config/theme/app_dimensions.dart';
 import 'package:pragma_exam/core/animations/fade_animation.dart';
+import 'package:pragma_exam/core/ui/home/home_screen.dart';
 import 'package:pragma_exam/share/helpers/responsive.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,10 +19,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  void _goToHome() => context.replaceNamed(HomeScreen.screenName);
+
   @override
   void initState() {
     super.initState();
-    //Timer(k3sec, () => context.replaceNamed(HomeScreen.screenName));
+    Timer(k3sec, () => _goToHome());
   }
 
   @override
