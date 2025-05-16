@@ -28,10 +28,10 @@ class _CustomCacheNetworkImageState extends State<CustomCacheNetworkImage> {
       progressIndicatorBuilder:
           (context, url, downloadProgress) =>
               kIsWeb
-                  ? CircularProgressIndicator(value: downloadProgress.progress)
+                  ? CircularProgressIndicator(value: downloadProgress.progress, padding: EdgeInsets.all(40), color: kGrey)
                   : Platform.isIOS
-                  ? CupertinoActivityIndicator(animating: !(downloadProgress.progress == 1))
-                  : CircularProgressIndicator(value: downloadProgress.progress),
+                  ? CupertinoActivityIndicator(animating: !(downloadProgress.progress == 1), radius: 40, color: kGrey)
+                  : CircularProgressIndicator(value: downloadProgress.progress, padding: EdgeInsets.all(40), color: kGrey),
       errorWidget: (context, url, error) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
