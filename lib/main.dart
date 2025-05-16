@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:pragma_exam/share/helpers/custom_scroll_behavior.dart';
 
 import 'config/constants/app_constants.dart';
@@ -15,7 +14,6 @@ Future main() async {
   _setPreferredOrientations();
   _initSharedPreferences();
   await Environment.load();
-  usePathUrlStrategy();
   runApp(ProviderScope(child: const MyApp()));
 }
 
