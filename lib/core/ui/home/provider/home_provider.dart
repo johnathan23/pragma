@@ -40,7 +40,7 @@ class Home extends _$Home {
 
   Future<void> searchCat(String param) async {
     try {
-      state = state.copyWith(isLoading: true);
+      state = state.copyWith(isLoading: true, catList: [], page: 0);
       final List<CatEntity> catList = await _homeRepository.searchCat(param: param);
       state = state.copyWith(catList: catList);
       state = state.copyWith(isLoading: false);
@@ -52,6 +52,24 @@ class Home extends _$Home {
       } else {
         state = state.copyWith(isLoading: false, hasError: error.toString());
         throw Exception('Fail to search cat in Home Provider: $error');
+      }
+    }
+  }
+
+  Future<void> loadMore({required int limit, required int page}) async {
+    try {
+      state = state.copyWith(isLoadMore: true, page: page);
+      final List<CatEntity> catList = await _homeRepository.getPortfolio(limit: limit, page: page);
+      state = state.copyWith(catList: [...state.catList!, ...catList]);
+      state = state.copyWith(isLoadMore: false);
+    } catch (error) {
+      if (error.runtimeType == DioException) {
+        final ServerError serverError = ServerError();
+        serverError.catchError(error: error as DioException, nameApi: 'loadMoreAndFetchData');
+        state = state.copyWith(isLoadMore: false, dioError: serverError.errorMsg);
+      } else {
+        state = state.copyWith(isLoadMore: false, hasError: error.toString());
+        throw Exception('Fail to load more and fetch data in Home Provider: $error');
       }
     }
   }

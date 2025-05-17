@@ -12,7 +12,7 @@ class HomeDatasourceImpl implements HomeDatasource {
   }
 
   @override
-  Future<List<CatEntity>> getPortfolio({int limit = 10, int page = 1}) {
+  Future<List<CatEntity>> getPortfolio({int limit = 10, int page = 0}) {
     try {
       return _apiClient.getPortfolio(limit: limit, page: page);
     } catch (e) {

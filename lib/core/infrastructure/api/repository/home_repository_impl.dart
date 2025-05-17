@@ -8,7 +8,7 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this._homeDatasourceImpl);
 
   @override
-  Future<List<CatEntity>> getPortfolio({int limit = 10, int page = 1}) {
+  Future<List<CatEntity>> getPortfolio({int limit = 10, int page = 0}) {
     return _homeDatasourceImpl.getPortfolio(limit: limit, page: page);
   }
 
