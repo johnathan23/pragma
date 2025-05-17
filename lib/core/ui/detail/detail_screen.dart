@@ -10,12 +10,12 @@ import 'package:pragma_exam/core/animations/slide_animation.dart';
 import 'package:pragma_exam/core/domain/entities/data/cat_entity.dart';
 import 'package:pragma_exam/core/domain/enum/slide_direction_enum.dart';
 import 'package:pragma_exam/core/domain/extension/color_extension.dart';
-import 'package:pragma_exam/core/ui/detail/widgets/custom_rating.dart';
+import 'package:pragma_exam/core/ui/detail/organisms/features.dart';
+import 'package:pragma_exam/core/ui/detail/organisms/other_features.dart';
 import 'package:pragma_exam/share/helpers/image_helper.dart';
 import 'package:pragma_exam/share/widgets/appbars/custom_appbar.dart';
 import 'package:pragma_exam/share/widgets/images/custom_cache_network_image.dart';
-
-import 'widgets/custom_feature.dart';
+import 'package:pragma_exam/share/widgets/scaffold/custom_scaffold.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
   static const String screenName = 'detail';
@@ -55,11 +55,19 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux ? null : CustomAppbar(
-          title: SizeTransition(sizeFactor: _sizeAnimation, axis: Axis.horizontal, axisAlignment: -1, child: Text(catEntity?.name ?? '')),
-          bgColor: kGrey02,
-        ),
+      child: CustomScaffold(
+        appBar:
+            kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux
+                ? null
+                : CustomAppbar(
+                  title: SizeTransition(
+                    sizeFactor: _sizeAnimation,
+                    axis: Axis.horizontal,
+                    axisAlignment: -1,
+                    child: Text(catEntity?.name ?? ''),
+                  ),
+                  bgColor: kGrey02,
+                ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -99,7 +107,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: CustomScrollView(
                   slivers: [
-                    if(kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux)...[
+                    if (kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux) ...[
                       SliverToBoxAdapter(
                         child: SlideAnimation(
                           direction: SlideDirection.bottomToTop,
@@ -121,109 +129,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
                         ),
                       ),
                     ),
-                    SliverToBoxAdapter(
-                      child: SlideAnimation(
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text('Features', style: Theme.of(context).textTheme.bodyLarge),
-                          subtitle: Column(
-                            children: [
-                              const SizedBox(height: kSize10),
-                              CustomFeature(feature: 'Origin', valueFeature: catEntity?.origin ?? '', icon: Symbols.public),
-                              const SizedBox(height: kSize10),
-                              CustomFeature(feature: 'Life span', valueFeature: catEntity?.lifeSpan ?? '', icon: Symbols.monitor_heart),
-                              const SizedBox(height: kSize10),
-                              CustomFeature(feature: 'Temperament', valueFeature: catEntity?.temperament ?? '', icon: Symbols.pets),
-                              const SizedBox(height: kSize10),
-                              CustomFeature(feature: 'Weight', valueFeature: catEntity?.weight.metric ?? '', icon: Symbols.fitness_center),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: SlideAnimation(
-                        direction: SlideDirection.topToBottom,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text('Other Features', style: Theme.of(context).textTheme.bodyLarge),
-                          subtitle: Column(
-                            children: [
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Intelligence',
-                                value: catEntity?.intelligence ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Adaptability',
-                                value: catEntity?.adaptability ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Energy Level',
-                                value: catEntity?.energyLevel ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Affection Level',
-                                value: catEntity?.affectionLevel ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Child Friendly',
-                                value: catEntity?.childFriendly ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Dog Friendly',
-                                value: catEntity?.dogFriendly ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Health Issues',
-                                value: catEntity?.healthIssues ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Shedding Level',
-                                value: catEntity?.sheddingLevel ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Social Needs',
-                                value: catEntity?.socialNeeds ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                              const SizedBox(height: kSize10),
-                              CustomRating(
-                                name: 'Stranger Friendly',
-                                value: catEntity?.strangerFriendly ?? 0,
-                                maxValue: 5,
-                                width: MediaQuery.of(context).size.width * 0.8,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    Features(catEntity: catEntity),
+                    OtherFeatures(catEntity: catEntity),
                   ],
                 ),
               ),

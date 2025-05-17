@@ -18,8 +18,8 @@ class CustomRating extends StatefulWidget {
     required this.maxValue,
     this.backgroundColor = kGrey03,
     this.valueColor = kGreen,
-    this.width = 150,
-    this.height = 20,
+    this.width = kSize150,
+    this.height = kSize20,
   });
 
   @override
@@ -36,7 +36,7 @@ class _CustomRatingState extends State<CustomRating> with SingleTickerProviderSt
     _controller = AnimationController(duration: k2sec, vsync: this);
 
     _animation = Tween<double>(
-      begin: 0.0,
+      begin: kNone,
       end: widget.value / widget.maxValue,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
@@ -68,7 +68,7 @@ class _CustomRatingState extends State<CustomRating> with SingleTickerProviderSt
                 );
               },
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: kSize20),
             Text('${widget.value}/${widget.maxValue}', style: const TextStyle(color: Colors.black, fontSize: 14)),
           ],
         ),
@@ -104,7 +104,7 @@ class _LinearProgressPainter extends CustomPainter {
           ..color = backgroundColor
           ..style = PaintingStyle.fill;
 
-    final backgroundRRect = RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, size.width, size.height), const Radius.circular(10));
+    final backgroundRRect = RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, size.width, size.height), const Radius.circular(kSize10));
     canvas.drawRRect(backgroundRRect, backgroundPaint);
 
     final progressWidth = size.width * progress;
@@ -116,7 +116,7 @@ class _LinearProgressPainter extends CustomPainter {
           ..shader = gradient.createShader(Rect.fromLTWH(0, 0, progressWidth, size.height))
           ..style = PaintingStyle.fill;
 
-    final progressRRect = RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, progressWidth, size.height), const Radius.circular(10));
+    final progressRRect = RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, progressWidth, size.height), const Radius.circular(kSize10));
     canvas.drawRRect(progressRRect, valuePaint);
   }
 

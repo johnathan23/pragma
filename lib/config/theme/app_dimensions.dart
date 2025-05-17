@@ -18,6 +18,7 @@ const double kSize34 = 34.0;
 const double kSize40 = 40.0;
 const double kSize50 = 50.0;
 const double kSize100 = 100.0;
+const double kSize150 = 150.0;
 const double kSize160 = 160.0;
 const double kSize200 = 200.0;
 const double kSize300 = 300.0;

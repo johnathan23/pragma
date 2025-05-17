@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
 import 'package:pragma_exam/share/widgets/appbars/organisms/android/appbar_android.dart';
 import 'package:pragma_exam/share/widgets/appbars/organisms/ios/appbar_ios.dart';
 
-class CustomSearchAppbar extends StatelessWidget implements PreferredSizeWidget {
+class CustomSearchAppbar extends StatelessWidget implements PreferredSizeWidget, ObstructingPreferredSizeWidget {
   final Widget? title;
   final Color? bgColor;
   final void Function()? onPressedSearch;
@@ -28,4 +29,7 @@ class CustomSearchAppbar extends StatelessWidget implements PreferredSizeWidget 
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
+
+  @override
+  bool shouldFullyObstruct(BuildContext context) => true;
 }

@@ -12,3 +12,5 @@ String kApiKey = Environment.apiKey;
 String kBucketUrl = Environment.bucketUrl;
 
 const kApiV1 = 'v1';
+
+const String kImageLogoPath = 'assets/images/cat.png';

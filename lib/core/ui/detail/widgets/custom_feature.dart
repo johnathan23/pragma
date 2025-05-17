@@ -16,8 +16,18 @@ class CustomFeature extends StatelessWidget {
       children: [
         Icon(icon, color: kGrey, size: kSize20),
         const SizedBox(width: kSize10),
-        Flexible(child: Text('$feature:  $valueFeature', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kBlack))),
+        Flexible(child: _customText(context, '$feature: ', valueFeature)),
       ],
+    );
+  }
+
+  Text _customText(BuildContext context, String text, String value) {
+    return Text.rich(
+      TextSpan(
+        text: text,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kBlack, fontWeight: FontWeight.w500),
+        children: [TextSpan(text: value, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kBlack))],
+      ),
     );
   }
 }

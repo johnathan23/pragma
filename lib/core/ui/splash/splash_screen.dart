@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pragma_exam/config/constants/app_constants.dart';
 import 'package:pragma_exam/config/theme/app_colors.dart';
 import 'package:pragma_exam/config/theme/app_dimensions.dart';
 import 'package:pragma_exam/core/animations/fade_animation.dart';
 import 'package:pragma_exam/core/ui/home/home_screen.dart';
 import 'package:pragma_exam/share/helpers/responsive.dart';
+import 'package:pragma_exam/share/widgets/scaffold/custom_scaffold.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String screenName = 'splash';
@@ -29,16 +31,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final String imageLogoPath = 'assets/images/cat.png';
     final double sizeImage = _getSizeImageByPlatform(context);
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: kGrey,
+      child: CustomScaffold(
+        backgroundColor: kGrey02,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
-          children: [FadeAnimation(duration: k3sec, child: Image.asset(imageLogoPath, width: sizeImage, height: sizeImage))],
+          children: [FadeAnimation(duration: k3sec, child: Image.asset(kImageLogoPath, width: sizeImage, height: sizeImage))],
         ),
       ),
     );
