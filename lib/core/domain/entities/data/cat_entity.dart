@@ -9,6 +9,7 @@ part 'cat_entity.g.dart';
 sealed class CatEntity with _$CatEntity {
   const factory CatEntity({
     required CatWeightEntity weight,
+    @Default(false) @JsonKey(includeFromJson: false, includeToJson: false) bool? isFavorite,
     String? id,
     String? name,
     String? temperament,
