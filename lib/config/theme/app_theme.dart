@@ -31,7 +31,7 @@ class AppTheme {
     headlineLarge: TextStyle(fontSize: kSize28, fontWeight: FontWeight.bold),
   );
 
-  static CardTheme get _cardTheme => CardTheme(color: kWhite, elevation: kNone, margin: EdgeInsets.zero);
+  static CardTheme get _cardTheme => CardTheme(color: kWhite, elevation: kSize1, margin: EdgeInsets.zero);
 
   static InputDecorationTheme get _inputDecorationTheme => const InputDecorationTheme(
     focusedBorder: InputBorder.none,

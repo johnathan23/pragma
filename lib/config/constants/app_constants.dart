@@ -1,6 +1,6 @@
 import 'environment_constants.dart';
 
-const String kAppName = 'Portfolio';
+const String kAppName = 'Cat breeds';
 
 const String kTag = '### $kAppName';
 

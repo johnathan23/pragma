@@ -27,6 +27,7 @@ const double kSize500 = 500.0;
 const Duration k150milSec = Duration(milliseconds: 150);
 const Duration k500milSec = Duration(milliseconds: 500);
 
+const Duration k1sec = Duration(seconds: 1);
 const Duration k2sec = Duration(seconds: 2);
 const Duration k3sec = Duration(seconds: 3);
 const Duration k20sec = Duration(seconds: 20);
