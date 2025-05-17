@@ -54,7 +54,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppbar(
-          title: SizeTransition(sizeFactor: _sizeAnimation, axis: Axis.horizontal, axisAlignment: -1, child: Text(catEntity?.name ?? '')),
+          title: SizeTransition(sizeFactor: _sizeAnimation, axis: Axis.horizontal, axisAlignment: -1, child: Text(catEntity?.name ?? ''),),
+          bgColor: kGrey02,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
