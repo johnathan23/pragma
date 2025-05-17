@@ -54,7 +54,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppbar(
-          title: SizeTransition(sizeFactor: _sizeAnimation, axis: Axis.horizontal, axisAlignment: -1, child: Text(catEntity?.name ?? ''),),
+          title: SizeTransition(sizeFactor: _sizeAnimation, axis: Axis.horizontal, axisAlignment: -1, child: Text(catEntity?.name ?? '')),
           bgColor: kGrey02,
         ),
         body: Column(
@@ -127,84 +127,87 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child:  SlideAnimation(direction: SlideDirection.topToBottom, child: ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: Text('Other Features', style: Theme.of(context).textTheme.bodyLarge),
-                        subtitle: Column(
-                          children: [
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Intelligence',
-                              value: catEntity?.intelligence ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Adaptability',
-                              value: catEntity?.adaptability ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Energy Level',
-                              value: catEntity?.energyLevel ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Affection Level',
-                              value: catEntity?.affectionLevel ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Child Friendly',
-                              value: catEntity?.childFriendly ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Dog Friendly',
-                              value: catEntity?.dogFriendly ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Health Issues',
-                              value: catEntity?.healthIssues ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Shedding Level',
-                              value: catEntity?.sheddingLevel ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Social Needs',
-                              value: catEntity?.socialNeeds ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                            const SizedBox(height: kSize10,),
-                            CustomRating(
-                              name: 'Stranger Friendly',
-                              value: catEntity?.strangerFriendly ?? 0,
-                              maxValue: 5,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                          ],
-                        )
-                      )),
+                      child: SlideAnimation(
+                        direction: SlideDirection.topToBottom,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text('Other Features', style: Theme.of(context).textTheme.bodyLarge),
+                          subtitle: Column(
+                            children: [
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Intelligence',
+                                value: catEntity?.intelligence ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Adaptability',
+                                value: catEntity?.adaptability ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Energy Level',
+                                value: catEntity?.energyLevel ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Affection Level',
+                                value: catEntity?.affectionLevel ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Child Friendly',
+                                value: catEntity?.childFriendly ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Dog Friendly',
+                                value: catEntity?.dogFriendly ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Health Issues',
+                                value: catEntity?.healthIssues ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Shedding Level',
+                                value: catEntity?.sheddingLevel ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Social Needs',
+                                value: catEntity?.socialNeeds ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                              const SizedBox(height: kSize10),
+                              CustomRating(
+                                name: 'Stranger Friendly',
+                                value: catEntity?.strangerFriendly ?? 0,
+                                maxValue: 5,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

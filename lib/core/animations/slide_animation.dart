@@ -8,7 +8,13 @@ class SlideAnimation extends StatefulWidget {
   final SlideDirection direction;
   final Duration? duration;
 
-  const SlideAnimation({super.key, required this.child, this.isEven = false, this.direction = SlideDirection.leftToRight,  this.duration = k1sec});
+  const SlideAnimation({
+    super.key,
+    required this.child,
+    this.isEven = false,
+    this.direction = SlideDirection.leftToRight,
+    this.duration = k1sec,
+  });
 
   @override
   State<SlideAnimation> createState() => _SlideAnimationState();

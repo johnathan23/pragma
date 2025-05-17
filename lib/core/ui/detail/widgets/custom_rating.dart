@@ -23,7 +23,7 @@ class CustomRating extends StatefulWidget {
   });
 
   @override
-   createState() => _CustomRatingState();
+  createState() => _CustomRatingState();
 }
 
 class _CustomRatingState extends State<CustomRating> with SingleTickerProviderStateMixin {
@@ -33,17 +33,12 @@ class _CustomRatingState extends State<CustomRating> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: k2sec,
-      vsync: this,
-    );
+    _controller = AnimationController(duration: k2sec, vsync: this);
 
-    _animation = Tween<double>(begin: 0.0, end: widget.value / widget.maxValue).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
+    _animation = Tween<double>(
+      begin: 0.0,
+      end: widget.value / widget.maxValue,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _controller.forward();
   }
@@ -59,10 +54,7 @@ class _CustomRatingState extends State<CustomRating> with SingleTickerProviderSt
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.name,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kBlack),
-        ),
+        Text(widget.name, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kBlack)),
         const SizedBox(height: kSize10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -71,24 +63,13 @@ class _CustomRatingState extends State<CustomRating> with SingleTickerProviderSt
               animation: _animation,
               builder: (context, child) {
                 return CustomPaint(
-                  painter: _LinearProgressPainter(
-                    _animation.value,
-                    widget.maxValue,
-                    widget.backgroundColor,
-                    widget.valueColor,
-                  ),
+                  painter: _LinearProgressPainter(_animation.value, widget.maxValue, widget.backgroundColor, widget.valueColor),
                   child: SizedBox(width: widget.width, height: widget.height),
                 );
               },
             ),
             const SizedBox(width: 20),
-            Text(
-              '${widget.value}/${widget.maxValue}',
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-              ),
-            ),
+            Text('${widget.value}/${widget.maxValue}', style: const TextStyle(color: Colors.black, fontSize: 14)),
           ],
         ),
       ],
@@ -103,17 +84,10 @@ class _LinearProgressPainter extends CustomPainter {
   final Color progressColor;
   late List<Color> gradientColors = [kGrey03, kGrey03];
 
-  _LinearProgressPainter(
-      this.progress,
-      this.maxItems,
-      this.backgroundColor,
-      this.progressColor,
-      );
+  _LinearProgressPainter(this.progress, this.maxItems, this.backgroundColor, this.progressColor);
 
   @override
   void paint(Canvas canvas, Size size) {
-
-
     if (progress > 0.1 && progress < 0.3) {
       gradientColors = [kGrey02, kRed];
     }
@@ -125,32 +99,24 @@ class _LinearProgressPainter extends CustomPainter {
       gradientColors = [kGrey02, kGreen];
     }
 
-    final backgroundPaint = Paint()
-      ..color = backgroundColor
-      ..style = PaintingStyle.fill;
+    final backgroundPaint =
+        Paint()
+          ..color = backgroundColor
+          ..style = PaintingStyle.fill;
 
-    final backgroundRRect = RRect.fromRectAndRadius(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      const Radius.circular(10),
-    );
+    final backgroundRRect = RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, size.width, size.height), const Radius.circular(10));
     canvas.drawRRect(backgroundRRect, backgroundPaint);
 
     final progressWidth = size.width * progress;
 
-    final gradient = LinearGradient(
-      colors: gradientColors,
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    );
+    final gradient = LinearGradient(colors: gradientColors, begin: Alignment.centerLeft, end: Alignment.centerRight);
 
-    final valuePaint = Paint()
-      ..shader = gradient.createShader(Rect.fromLTWH(0, 0, progressWidth, size.height))
-      ..style = PaintingStyle.fill;
+    final valuePaint =
+        Paint()
+          ..shader = gradient.createShader(Rect.fromLTWH(0, 0, progressWidth, size.height))
+          ..style = PaintingStyle.fill;
 
-    final progressRRect = RRect.fromRectAndRadius(
-      Rect.fromLTWH(0, 0, progressWidth, size.height),
-      const Radius.circular(10),
-    );
+    final progressRRect = RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, progressWidth, size.height), const Radius.circular(10));
     canvas.drawRRect(progressRRect, valuePaint);
   }
 
