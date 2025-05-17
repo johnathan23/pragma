@@ -12,6 +12,7 @@ import 'package:pragma_exam/share/widgets/appbars/custom_search_appbar.dart';
 import 'package:pragma_exam/share/widgets/cards/custom_card.dart';
 import 'package:pragma_exam/share/widgets/scaffold/custom_scaffold.dart';
 import 'package:pragma_exam/share/widgets/searchBar/custom_search_bar.dart';
+import 'package:pragma_exam/share/widgets/shimmers/home_shimmer.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   static const String screenName = 'home';
@@ -100,30 +101,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   elevation: WidgetStatePropertyAll<double>(kSize1),
                 ),
               ],
-              Expanded(
-                child: CustomScrollView(
-                  controller: _scrollController,
-                  anchor: 0.01,
-                  slivers: [
-                    SliverGrid.builder(
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux ? 380 : 200,
-                        mainAxisExtent: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux ? 472 : 260,
-                        crossAxisSpacing: kSize16,
-                        mainAxisSpacing: kSize16,
+              if (ref.watch(homeProvider).isLoading) ...[
+                Expanded(child: HomeShimmer()),
+              ] else ...[
+                Expanded(
+                  child: CustomScrollView(
+                    controller: _scrollController,
+                    anchor: 0.01,
+                    slivers: [
+                      SliverGrid.builder(
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux ? 380 : 200,
+                          mainAxisExtent: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux ? 472 : 260,
+                          crossAxisSpacing: kSize16,
+                          mainAxisSpacing: kSize16,
+                        ),
+                        itemCount: cats?.length,
+                        itemBuilder: (context, index) {
+                          return CustomCard(
+                            catEntity: cats?[index],
+                            index: index,
+                            isFavorite: ref.read(homeProvider).catList?[index].isFavorite ?? false,
+                          );
+                        },
                       ),
-                      itemCount: cats?.length,
-                      itemBuilder: (context, index) {
-                        return CustomCard(
-                          catEntity: cats?[index],
-                          index: index,
-                          isFavorite: ref.read(homeProvider).catList?[index].isFavorite ?? false,
-                        );
-                      },
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),
