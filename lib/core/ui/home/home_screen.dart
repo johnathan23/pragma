@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +96,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           padding: EdgeInsets.symmetric(horizontal: kSize16),
           child: Column(
             children: [
-              if (isSearching) ...[
+              if (isSearching || kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux) ...[
                 const SizedBox(height: kSize10),
                 SearchBar(
                   hintText: 'search cats'.capitalize(),
@@ -113,8 +114,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   slivers: [
                     SliverGrid.builder(
                       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        mainAxisExtent: 260,
+                        maxCrossAxisExtent:  kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux ? 380 : 200,
+                        mainAxisExtent:  kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux? 472 : 260,
                         crossAxisSpacing: 16,
                         mainAxisSpacing: 16,
                       ),
@@ -151,8 +152,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     child: CustomCacheNetworkImage(
                       imageUrl: ImageHelper.getImageUrl(catEntity?.referenceImageId ?? ''),
                       fit: BoxFit.fill,
-                      width: 180,
-                      height: 180,
+                      width: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux? 400 : 180,
+                      height: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux? 400 :180,
                     ),
                   ),
                 ),

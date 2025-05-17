@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -53,7 +56,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppbar(
+        appBar: kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux ? null : CustomAppbar(
           title: SizeTransition(sizeFactor: _sizeAnimation, axis: Axis.horizontal, axisAlignment: -1, child: Text(catEntity?.name ?? '')),
           bgColor: kGrey02,
         ),
@@ -96,6 +99,18 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: CustomScrollView(
                   slivers: [
+                    if(kIsWeb || Platform.isWindows || Platform.isMacOS || Platform.isLinux)...[
+                      SliverToBoxAdapter(
+                        child: SlideAnimation(
+                          direction: SlideDirection.bottomToTop,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text('Breed', style: Theme.of(context).textTheme.bodyLarge),
+                            subtitle: Text(catEntity?.name ?? '', style: Theme.of(context).textTheme.bodyMedium),
+                          ),
+                        ),
+                      ),
+                    ],
                     SliverToBoxAdapter(
                       child: SlideAnimation(
                         direction: SlideDirection.rightToLeft,
