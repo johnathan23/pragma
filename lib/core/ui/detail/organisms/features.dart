@@ -4,6 +4,7 @@ import 'package:pragma_exam/config/theme/app_dimensions.dart';
 import 'package:pragma_exam/core/animations/slide_animation.dart';
 import 'package:pragma_exam/core/domain/entities/data/cat_entity.dart';
 import 'package:pragma_exam/core/ui/detail/widgets/custom_feature.dart';
+import 'package:pragma_exam/share/widgets/listTitle/organisms/custom_list_title.dart';
 
 class Features extends StatelessWidget {
   final CatEntity? catEntity;
@@ -14,8 +15,8 @@ class Features extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SlideAnimation(
-        child: ListTile(
-          contentPadding: EdgeInsets.zero,
+        child: CustomListTitle(
+          padding: EdgeInsets.zero,
           title: Text('Features', style: Theme.of(context).textTheme.bodyLarge),
           subtitle: Column(
             children: [

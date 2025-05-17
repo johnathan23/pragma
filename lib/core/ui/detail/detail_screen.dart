@@ -15,6 +15,7 @@ import 'package:pragma_exam/core/ui/detail/organisms/other_features.dart';
 import 'package:pragma_exam/share/helpers/image_helper.dart';
 import 'package:pragma_exam/share/widgets/appbars/custom_appbar.dart';
 import 'package:pragma_exam/share/widgets/images/custom_cache_network_image.dart';
+import 'package:pragma_exam/share/widgets/listTitle/organisms/custom_list_title.dart';
 import 'package:pragma_exam/share/widgets/scaffold/custom_scaffold.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
@@ -111,8 +112,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
                       SliverToBoxAdapter(
                         child: SlideAnimation(
                           direction: SlideDirection.bottomToTop,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.zero,
+                          child: CustomListTitle(
+                            padding: EdgeInsets.zero,
                             title: Text('Breed', style: Theme.of(context).textTheme.bodyLarge),
                             subtitle: Text(catEntity?.name ?? '', style: Theme.of(context).textTheme.bodyMedium),
                           ),
@@ -122,8 +123,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> with SingleTickerPr
                     SliverToBoxAdapter(
                       child: SlideAnimation(
                         direction: SlideDirection.rightToLeft,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
+                        child: CustomListTitle(
+                          padding: EdgeInsets.zero,
                           title: Text('Description', style: Theme.of(context).textTheme.bodyLarge),
                           subtitle: Text(catEntity?.description ?? '', style: Theme.of(context).textTheme.bodyMedium),
                         ),
