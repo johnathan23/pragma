@@ -1,0 +1,114 @@
+name: pragma_exam
+description: "pragma exam"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# * Something common is to manage versions using 3 numbers: X.Y.Z and each one indicates a different thing:
+# * The first (X) is known as the major version and indicates the main version of the software.
+# * Example: 1.0.0, 3.0.0
+# * The second (Y) is known as a minor version and indicates new functionalities.
+# * Example: 1.2.0, 3.3.0
+# * The third (Z) is known as a patch and indicates that a code review was carried out due to some error.
+# * Example: 1.2.2, 3.3.4
+# ! Now that we know the meaning of each number, an important question comes: how do we know when to change them and which to change?
+# ? Major version or X:
+# * when we add new important functionalities, it can be as a new module or key feature for the functionality.
+# ? Minor version or Y:
+# * when we make minor corrections, when we fix a bug and add functionality that is not crucial to the project.
+# ? Patch or Z:
+# * every time we deliver the project.
+
+version: 1.0.0+1 # ? (x.y.z)  => version app + (b) => build app
+# * Whenever a compilation is generated (apk, bundle, ipa...etc) the build number must be increased by 1.
+
+environment:
+  sdk: '>=3.7.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8 # * Cupertino Icons
+  # ? add dependencies here
+  flutter_dotenv: ^5.2.1  # * environment variables
+  go_router: ^14.8.1 # * routing
+  flutter_riverpod: ^2.6.1 # * riverpod state management
+  riverpod_annotation: ^2.6.1 # * riverpod state management
+  freezed_annotation: ^3.0.0  # * freezed code generation
+  json_annotation: ^4.9.0 # * json annotation
+  retrofit: ^4.4.2 # * api consume
+  dio: ^5.8.0+1 # * api consume
+  shared_preferences: ^2.5.2 # * save data locally
+  url_launcher: ^6.3.1 # * open urls
+  shimmer: ^3.0.0 # * loading effect
+  cached_network_image: ^3.4.1 # * cache images
+  material_symbols_icons: ^4.2805.1 # * Material Design Icons
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0 # * Lints for flutter
+  # ? add dev_dependencies here
+  flutter_launcher_icons: ^0.14.3 # * change app icon
+  build_runner: ^2.4.15 # * code generation
+  json_serializable: ^6.9.4 # * code generation
+  freezed: ^3.0.3 # * freezed code generation
+  riverpod_generator: ^2.6.5 # * riverpod code generation
+  retrofit_generator: any # * retrofit code generation
+  coverage: ^1.11.1 # * code coverage
+
+# ? flutter_icons add here -->
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/launcher/ic_launcher.png"
+  web:
+    generate: true
+    image_path: "assets/launcher/ic_launcher.png"
+  windows:
+    generate: true
+    image_path: "assets/launcher/ic_launcher.png"
+    icon_size: 48 # * min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/launcher/ic_launcher.png"
+
+flutter:
+  uses-material-design: true # * Material Design
+  # ? add flutter configurations here
+
+  assets:
+    # ? add assets here
+    - assets/ # * all assets
+    - assets/images/ # * images
+    - .env/ # * environment variables
+
+
+  fonts:
+    # ? The weight of the font can be:
+    # * Thin : FontWeight w100
+    # * Extra-light : FontWeight w200
+    # * Light : FontWeight w300
+    # * Normal : FontWeight w400
+    # * Medium : FontWeight w500
+    # * Semi-bold : FontWeight w600
+    # * Bold : FontWeight w700
+    # * Extra-bold : FontWeight w800
+    # * Black : FontWeight w900
+
+    # ? add fonts here
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/Quicksand-Light.ttf
+          style: normal
+          weight: 300
+        - asset: assets/fonts/Quicksand-Medium.ttf
+          style: normal
+          weight: 400
+        - asset: assets/fonts/Quicksand-Regular.ttf
+          style: normal
+          weight: 500
+        - asset: assets/fonts/Quicksand-SemiBold.ttf
+          style: normal
+          weight: 600
+        - asset: assets/fonts/Quicksand-Bold.ttf
+          style: normal
+          weight: 700
